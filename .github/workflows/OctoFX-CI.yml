@@ -19,7 +19,9 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Navigate to Workspace
-        run: cd '$GITHUB_WORKSPACE/source'
+        run: |
+          cd $GITHUB_WORKSPACE
+          cd source
         
       - name: Create Build Directory
         run: mkdir _build
