@@ -19,13 +19,13 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
 
       - name: Navigate to Workspace
-        run: cd $GITHUB_WORKSPACE
+        run: cd '$GITHUB_WORKSPACE/source'
         
       - name: Create Build Directory
         run: mkdir _build
 
       - name: Restore Packages
-        run: nuget restore /source/OctoFX.sln
+        run: nuget restore OctoFX.sln
 
       - name: Build Solution
         run: |
