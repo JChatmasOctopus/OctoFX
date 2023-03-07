@@ -28,17 +28,20 @@ jobs:
       - name: Restore Packages
         run: nuget restore source/OctoFX.sln
 
-      - name: Build Trading Site
+      - name: Build Solution
         run: |
-          msbuild.exe "source/OctoFX.TradingWebsite" /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build/OctoFX.TradingWebsite"
+          msbuild.exe "source/OctoFX.sln" /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+      
+      - name: What's in here
+        run: dir
       
       - name: Create Zip Package for Octopus Deploy
         uses: OctopusDeploy/create-zip-package-action@v3.0.2
         with:
-          package_id: "OctoFXTrading_GHATest"
+          package_id: "OctoFX_GHA"
           version: "0.0.1"
           output_folder: "./packaging"
-          base_path: "source/_build/OctoFX.TradingWebsite"
+          base_path: "source/_build"
           files: |
             **/*.*
             
