@@ -44,7 +44,7 @@ jobs:
           # The folder to put the resulting package in, relative to the current working directory; not the base path.
           output_folder: "./packaging"
           # The base path for the input files.
-          base_path: "../_build"
+          base_path: "source/_build"
           # Multi-line list of files to include in the package, relative to the basePath. Supports globbing.
           files: |
             **/*.*
