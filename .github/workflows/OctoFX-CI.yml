@@ -37,15 +37,15 @@ jobs:
       - name: What's in here
         run: dir
       
-      - name: Create Zip Package for Octopus Deploy
-        uses: OctopusDeploy/create-zip-package-action@v3.0.2
-        with:
-          package_id: "OctoFX_GHA"
-          version: "0.0.1"
-          output_folder: "./packaging"
-          base_path: "source/_build"
-          files: |
-            **/*.*
+      #- name: Create Zip Package for Octopus Deploy
+      #  uses: OctopusDeploy/create-zip-package-action@v3.0.2
+      #  with:
+      #    package_id: "OctoFX_GHA"
+      #    version: "0.0.1"
+      #    output_folder: "./packaging"
+      #    base_path: "source/_build"
+      #    files: |
+      #      **/*.*
             
       - name: Push Package to Octopus Deploy
         uses: OctopusDeploy/push-package-action@v3.0.4
