@@ -31,7 +31,7 @@ jobs:
       - name: Build Solution
         run: |
           #msbuild.exe "source/OctoFX.sln" /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
-          msbuild.exe "source/OctoFX.sln" /nologo /nr:false /p:SkipInvalidConfigurations=true /p:PackageLocation="../_build" /p:RunOctoPack=true /p:OctoPackPackageVersion="0.0.2" /p:OctoPackPublishPackageToFileShare="./packaging" /p:OctoPackEnforceAddingFiles=true /p:platform="Any CPU" /p:configuration="Release"
+          msbuild.exe "source/OctoFX.sln" /nologo /nr:false /p:SkipInvalidConfigurations=true /p:PackageLocation="../_build" /p:RunOctoPack=true /p:OctoPackPackageVersion="0.0.2" /p:OctoPackPublishPackageToFileShare="../../packaging" /p:OctoPackEnforceAddingFiles=true /p:platform="Any CPU" /p:configuration="Release"
           #/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
       
       - name: What's in here
@@ -50,7 +50,7 @@ jobs:
       - name: Push Package to Octopus Deploy
         uses: OctopusDeploy/push-package-action@v3.0.4
         with:
-          packages: "source/_build/*.nupkg"
+          packages: "source/packaging/*.nupkg"
           overwrite_mode: OverwriteExisting
           api_key: ${{ secrets.OCTOPUS_API_KEY }}
           server: 'https://demo.octopus.app'
