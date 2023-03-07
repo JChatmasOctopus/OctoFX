@@ -50,7 +50,7 @@ jobs:
       - name: Push Package to Octopus Deploy
         uses: OctopusDeploy/push-package-action@v3.0.4
         with:
-          packages: packaging/*.zip
+          packages: packaging/*.nupkg
           overwrite_mode: OverwriteExisting
           api_key: ${{ secrets.OCTOPUS_API_KEY }}
           server: 'https://demo.octopus.app'
