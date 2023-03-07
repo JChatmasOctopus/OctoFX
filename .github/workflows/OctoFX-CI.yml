@@ -21,13 +21,12 @@ jobs:
       - name: Navigate to Workspace
         run: |
           cd $GITHUB_WORKSPACE
-          cd source
         
       - name: Create Build Directory
         run: mkdir _build
 
       - name: Restore Packages
-        run: nuget restore OctoFX.sln
+        run: nuget restore source/OctoFX.sln
 
       - name: Build Solution
         run: |
