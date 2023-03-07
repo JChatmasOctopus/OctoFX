@@ -48,3 +48,19 @@ jobs:
           # Multi-line list of files to include in the package, relative to the basePath. Supports globbing.
           files: |
             **/*.*
+            
+      - name: Push Package to Octopus Deploy
+        # You may pin to the exact commit or the version.
+        # uses: OctopusDeploy/push-package-action@035fb4fdbe77401574ec62275f9a531c570bd420
+        uses: OctopusDeploy/push-package-action@v3.0.4
+        with:
+          # A multi-line list of packages to push to Octopus Deploy.
+          packages: packaging/*.zip
+          # Determines the action to perform with package if it already exists in the repository. Valid values are "FailIfExists", "OverwriteExisting", and "IgnoreIfExists".
+          overwrite_mode: FailIfExists
+          # The API key used to access Octopus Deploy. You must provide an API key or username and password. If the guest account is enabled, a key of API-GUEST may be used. It is strongly recommended that this value retrieved from a GitHub secret.
+          api_key: ${{ secrets.OCTOPUS_API_KEY }}
+          # The base URL hosting Octopus Deploy (i.e. "https://octopus.example.com/"). It is recommended to retrieve this value from an environment variable.
+          server: 'https://demo.octopus.app'
+          # The name or ID of a space within which this command will be executed. If omitted, the default space will be used.
+          space: 'Enterprise'
